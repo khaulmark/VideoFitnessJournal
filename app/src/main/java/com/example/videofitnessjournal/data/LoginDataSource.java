@@ -1,5 +1,10 @@
 package com.example.videofitnessjournal.data;
 
+import android.app.Activity;
+import android.content.Context;
+import android.database.Cursor;
+
+import com.example.videofitnessjournal.data.model.JournalProvider;
 import com.example.videofitnessjournal.data.model.LoggedInUser;
 
 import java.io.IOException;
@@ -9,10 +14,15 @@ import java.io.IOException;
  */
 public class LoginDataSource {
 
-    public Result<LoggedInUser> login(String username, String password) {
+    private Cursor myCursor;
+
+    public Result<LoggedInUser> login(String username, String password, Context context) {
 
         try {
+
             // TODO: handle loggedInUser authentication
+            // Query the JournalDB and load all data for user into a new LoggedInUser
+            // If user does not exist, we will create one
             LoggedInUser fakeUser =
                     new LoggedInUser(
                             java.util.UUID.randomUUID().toString(),
